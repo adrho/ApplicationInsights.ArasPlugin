@@ -113,7 +113,7 @@ Now, run the Method test\_method\_1 using the 'Run Server Method' Action.
 
 After a short delay, the Method will complete, and will send the Method calls to Application Insights.
 
-Login to the Azure Portal and navigate to your Application Insights.
+Login to the [Azure Portal](https://portal.azure.com) and navigate to your Application Insights.
 
 ![Azure Portal home page](Installation/AzurePortalHome.png)
 
