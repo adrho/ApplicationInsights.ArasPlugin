@@ -6,6 +6,8 @@ The Microsoft Application Insights Aras Plugin is a tool that allows administrat
 
 Once installed, all Aras Methods will log a detailed waterfall graph of their execution time into Application Insights.
 
+More information about Application Insights is available [here](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview).
+
 Included in this repository are
 
 * Updated method-config.xml file, which will instrument all Methods being run.
@@ -16,12 +18,12 @@ Included in this repository are
 
 ### Supported versions of Aras
 
-* This can be installed on all versions of Aras as long as they use the method-config.xml file.
+* This can be installed on all versions of Aras as long as they use the method-config.xml file \*\*
 
 ### Pre-requisites:
 * Installed Aras instance
 * .NET Framework 4.7.2
-* An Application Insights instance with corresponding Instrumentation Key
+* An Application Insights instance with corresponding Instrumentation Key. See [this link](https://docs.microsoft.com/en-us/azure/azure-monitor/app/create-new-resource) for how to create a new Application Insights resource and find the Instrumentation Key.
 
 ### Steps
 On your installation of Aras, copy the updated method-config.xml to your Innovator/Server/ directory. 
@@ -131,3 +133,21 @@ Open the one for test\_method\_1.
 Here is a more complex example taken from production data
 
 ![Complex example of Application Insights telemetry](Installation/ComplexExampleAppInsights.png)
+
+
+## Troubleshooting
+
+\*\* NOTE If you have a newer version of Aras than 12.0SP2, it comes with a different version of ApplicationInsights.dll installed which conflicts with the version 2.3.0 included in this project.
+
+You may need to add an assembly redirect into the Innovator/Server/web.config file
+
+	<configuration>
+		<runtime>
+			<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+				<dependentAssembly>
+					<assemblyIdentity name="Microsoft.ApplicationInsights" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+					<bindingRedirect oldVersion="0.0.0.0-2.10.0.0" newVersion="2.3.0.0" />
+				</dependentAssembly>
+			</assemblyBinding>
+		</runtime>
+	</configuration>
